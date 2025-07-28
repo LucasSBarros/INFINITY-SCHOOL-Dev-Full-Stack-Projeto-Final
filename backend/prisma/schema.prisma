@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String      @id @default(uuid())
+  name        String
+  email       String      @unique
+  password    String
+  role        String      
+  isActive    Boolean     @default(true)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  accessLogs  AccessLog[]
+}
+
+model Area {
+  id          String      @id @default(uuid())
+  name        String
+  description String
+  accessLevel Int
+
+  accessLogs  AccessLog[]
+}
+
+model AccessLog {
+  id           String   @id @default(uuid())
+  timestamp    DateTime @default(now())
+  status       String  
+  deniedReason String?
+
+  userId       String
+  areaId       String
+
+  user         User     @relation(fields: [userId], references: [id])
+  area         Area     @relation(fields: [areaId], references: [id])
+}
+
+model Resource {
+  id          String    @id @default(uuid())
+  name        String
+  type        String
+  description String
+  status      String   
+  location    String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
