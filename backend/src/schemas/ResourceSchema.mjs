@@ -5,7 +5,7 @@ export const resourceSchema = z.object({
   name: z.string().min(1, "O nome do recurso é obrigatório!"),
   type: z.string().min(1, "O tipo do recurso é obrigatório!"),
   description: z.string().optional(),
-  status: z.enum(["active", "inactive", "maintenance"]),
+  status: z.enum(["ativo", "inativo", "manutencao"]),
   location: z.string().min(1, "A localização é obrigatória!"),
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),

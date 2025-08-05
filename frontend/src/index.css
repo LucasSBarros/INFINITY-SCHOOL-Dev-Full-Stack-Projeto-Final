@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+    background: theme("colors.custom-black");
+    color: theme("colors.custom-ivory");
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg border border-custom-gray bg-custom-gray/30 hover:bg-custom-gray transition shadow-custom;
+  }
+  .btn-primary {
+    @apply bg-custom-gold text-custom-black hover:bg-custom-darkgold border-transparent;
+  }
+  .card {
+    @apply rounded-2xl border border-custom-gray bg-custom-black shadow-custom;
+  }
+  .card-body {
+    @apply p-4 md:p-6;
+  }
+  .input {
+    @apply bg-custom-black border-custom-gray text-custom-ivory placeholder-custom-ivory/50 rounded-lg;
+  }
+  .link {
+    @apply text-custom-ivory/90 hover:text-custom-gold transition;
+  }
+  .table {
+    @apply w-full border border-custom-gray rounded-xl overflow-hidden;
+  }
+  .th {
+    @apply bg-custom-gray/40 text-left px-3 py-2;
+  }
+  .td {
+    @apply px-3 py-2 border-t border-custom-gray/60;
+  }
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded-md border border-custom-gray;
+  }
+}
