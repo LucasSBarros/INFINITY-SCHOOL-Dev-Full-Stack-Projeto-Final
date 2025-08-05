@@ -41,9 +41,14 @@ cd INFINITY-SCHOOL-Dev-Full-Stack-Projeto-Final
 ### 2. Instale as dependências e Crie o .env do backend.
 
 cd backend
+
 npm install
 
 Configure o .env com as credenciais do seu banco (DATABASE_URL) e com as demais informações constantes no .env.example como JWT_SECRET, PORT dentro da pasta backend.
+
+  JWT_SECRET=my_fancy_secret
+  PORT=3000
+  DATABASE_URL="inserir aqui a url de conexão com o banco de dados"
 
 ### 3. Prepare o banco de dados.
 
@@ -63,12 +68,17 @@ npx prisma db seed
 
 npm run dev
 
-### 5. Rode o frontend
+### 5. Rode o frontend em um outro terminal
 
 cd ../frontend
+
 npm install
 
-# Rode a aplicação
+Configure o .env com as informações constantes no .env.example como VITE_API_BASE_URL dentro da pasta frontend.
+
+VITE_API_BASE_URL=http://localhost:3000/api
+
+### 6. Rode a aplicação
 
 npm run dev
 
